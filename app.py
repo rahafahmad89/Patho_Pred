@@ -150,6 +150,7 @@ with gr.Blocks(title="Variant Pathogenicity Demo — ExtraTrees (Dataset-4)") as
     btn_expl.click(fn=explain_first_row, inputs=inp, outputs=[out_plot, out_txt])
 
 if __name__ == "__main__":
-    port_env = os.environ.get("GRADIO_SERVER_PORT", "")
-    port = int(port_env) if port_env.isdigit() else None
-    demo.launch(server_name="0.0.0.0", server_port=port, share=False, debug=True)
+    import os
+    port = int(os.environ.get("PORT", "7860"))  # Render sets PORT
+    demo.launch(server_name="0.0.0.0", server_port=port, share=False)
+
